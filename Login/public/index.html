@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Registrierung</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="logo">Harbor</div>
+      <p class="tagline">Einfach anmelden oder ein Konto anlegen. Standard: alles bleibt lokal.</p>
+      <ul class="benefits">
+        <li><span>•</span>Schlichtes Layout</li>
+        <li><span>•</span>Demo-Modus speichert nur im Browser</li>
+        <li><span>•</span>Optional: API für echten Login</li>
+      </ul>
+      <div class="callout">
+        <p class="eyebrow">Hinweis</p>
+        <p>Standardmäßig läuft alles lokal im Browser. Wenn du die API nutzen willst, schalte sie in <code>app.js</code> mit <code>USE_API = true</code> frei und starte den Node-Server.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel__header">
+        <div class="tabs" role="tablist">
+          <button class="tab tab--active" data-mode="login" aria-selected="true">Login</button>
+          <button class="tab" data-mode="register" aria-selected="false">Registrieren</button>
+        </div>
+        <span class="badge">Demo ohne Datenbank</span>
+      </div>
+
+      <form id="authForm" novalidate>
+        <div class="fields">
+          <label class="field" data-field="name">
+            <span>Name</span>
+            <input type="text" name="name" autocomplete="name" placeholder="Max Mustermann">
+          </label>
+          <label class="field">
+            <span>E-Mail</span>
+            <input type="email" name="email" autocomplete="email" placeholder="mail@example.de" required>
+          </label>
+          <label class="field">
+            <span>Passwort</span>
+            <input type="password" name="password" autocomplete="current-password" placeholder="Mindestens 8 Zeichen" minlength="8" required>
+          </label>
+          <label class="field" data-field="confirm">
+            <span>Passwort bestätigen</span>
+            <input type="password" name="confirm" autocomplete="new-password" placeholder="Noch einmal eingeben">
+          </label>
+        </div>
+
+        <div class="actions">
+          <label class="remember">
+            <input type="checkbox" name="remember" checked>
+            <span>Angemeldet bleiben</span>
+          </label>
+          <button type="submit" class="cta">Weiter</button>
+        </div>
+
+        <p class="hint">Browser-Speicher wird nur auf diesem Gerät genutzt. Für einen echten Login nutze die API-Variante.</p>
+      </form>
+
+      <div class="status" aria-live="polite">
+        <p class="status__title">Status</p>
+        <p class="status__text" id="statusText">Bereit.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
